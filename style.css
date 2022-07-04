@@ -1,0 +1,438 @@
+@charset "utf-8";
+
+/*
+Base style
+*/
+body{
+    font-family: 'Noto Sans JP', sans-serif, "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+}
+.select, .input, .radio, .textarea, button{
+    cursor: pointer;
+}
+button{
+    border: none;
+}
+
+
+
+/*
+section
+*/
+.section{
+    padding: 30px 15px;
+}
+.section.section-secondary{
+    background-color: #efefef;
+}
+
+.section-headline{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 0 40px;
+}
+.section-botton{
+    text-align: center;
+    margin: 40px;
+}
+@media screen and (max-width: 768px){
+    .section{
+        padding: 20px 10px;
+    }
+    
+    .section-headline{
+        font-size: 30px;
+        margin: 0 0 20px;
+    }
+    .section-botton{
+        margin: 20px 0 0;
+    }    
+}
+/*
+hero
+*/
+.hero{
+    width: 100vw;/*vwはWindowサイズの横幅*/
+    height: 100vh;/*vhはWindowサイズの縦幅*/
+    position: relative;
+    overflow: hidden;/*ビデオを大きくしているのではみ出した部分はカットする*/
+}
+.hero > strong{
+    position: absolute;
+    z-index: 2;/*strongとvideoの両方にposition: absolute;がついているので、後にposition: absolute;があるvideoのほうが上に来てしまう。なのでzindexで調整*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /*top: 50%; left: 50%; transform: translate(-50%, -50%);の3つで要素をちょうど中央に持ってこれる*/
+    font-size: 120px;
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.hero >video{
+    position: absolute;
+    z-index: 1;
+    width: auto;
+    height: 150%;
+    /*width100% height100%*ではビデオのもともとのサイズのために横に余白ができてしまう。なので縦を100%より大きくして横は画面からはみ出すようにする*/
+}
+@media screen and (max-width: 768px){
+    .hero > strong{
+        font-size: 50px;
+    }
+}
+/*
+header
+*/
+.header{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;/*縦の軸がそろうようにする*/
+    padding: 0 15px;
+    position: fixed;/*ほかの要素と関係なく場所を固定できる*/
+    z-index: 10;
+    top: 0;
+    left: 0;
+}
+.header-logo{
+    margin: 0;
+}
+.header-logo > a{
+    display: block;
+    color: transparent;
+}
+/*.header-nav{}*/
+.header-navlist{
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+/*.header-navitem{}*/
+.header-navitem > a{
+    display: block;
+    padding: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: border-color .25s;
+
+}
+.header-navitem > a:hover{
+    border-bottom: 2px solid #333;
+}
+@media screen and (max-width: 768px){
+    .header{
+        font-size: 12px;
+    }
+}
+
+/*
+about
+*/
+.about{
+    margin: 0;
+    display: flex;/*Aboutの子要素に対して要素を横並びにする*/
+}
+.about-image{}
+.about-caption{
+    padding-left: 15px;
+}
+.about-headline{
+    margin: 0 0 20px;
+    font-size: 30px;
+}
+/*.about-description{}*/
+
+@media screen and (max-width: 768px){
+    .about{
+        display: block;
+    }
+    .about-image{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .about-headline{
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+/*
+grid
+*/
+.grid{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;/*display: flexがついてる要素を中央ぞろえにする。今回はなくても成立しそうだが*/
+    justify-content: center; /*displayflexチーとシートで検索*/
+    
+}
+.grid-item{
+    list-style: none;
+}
+.grid-col-2 > .grid-item{
+    width: 50%;
+}
+.grid-col-3 > .grid-item{
+    width: 33.3%;
+}
+.grid-col-4 > .grid-item{
+    width: 25%;   
+}
+@media screen and (max-width: 768px){
+    .grid{
+        display: block;
+    }
+    .grid-col-2 > .grid-item,
+    .grid-col-3 > .grid-item,
+    .grid-col-4 > .grid-item{
+        width: 100%;
+        margin: 20px 0;   
+    }
+}
+/*
+feature
+*/
+.feature{
+    text-align: center;
+    padding: 0 15px;
+}
+.feature-headline{
+    font-weight: bold;
+    margin: 0 0 20px;
+}
+.feature-img{
+    margin: 0 0 20px;
+}
+.feature-description{
+    text-align: left;
+    margin: 0;
+}
+/*
+card
+*/
+.card{
+    padding: 0 10px;
+}
+.card-link{
+    display: block;
+    color: #333;
+    text-decoration: none;
+    position: relative;
+    transition: background-color .25s;
+}
+.card-link:hover{
+    background-color: #efefef;
+}
+.card-label{
+    display: block;
+    position: absolute;/*親要素のrelativeを基準としてtopやleftをいじってる*/
+    top: 0;
+    left: 0;
+    background-color: #999;
+    color: #efefef;
+    font-size: 12px;
+    padding: 5px 10px;
+}
+.card-img{
+    width: 100%;
+    height: auto;
+}
+.card-info{
+    padding: 5px 10px;
+}
+/* .card-time{} */
+.card-headline{
+    margin: 0;
+}
+.card-description{
+    margin: 0;
+
+}
+
+/*
+avoter
+*/
+.avoter{
+    display: flex;
+    flex-direction: row-reverse;/*imgとnameの順番を逆にする。この時右に寄ってしまう。*/
+    justify-content: start;/*imgとnameを左寄せに*/
+    align-items: center;/*縦に中央ぞろえ*/
+    padding: 10px;
+}
+.avator-name{
+    font-weight: bold;
+    padding-left: 15px;
+}
+.avator-img{
+    margin: 0;
+    border-radius: 50%;
+    overflow: hidden;/*画像の角を丸くするのはboder-radiusとoverflow hiddenがセット。overflow hiddenははみ出た部分を隠しますという意味。*/
+}
+/*htmlの構造上dtはdlより後に持ってくることはできない。必ずdt→dlの順番にしないといけない。*/
+
+/*button*/
+.button{
+    display: inline-block;/*横並びに出き、さらにpadding,marginも調整できる*/
+    color: #efefef;
+    background-color: #333;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px 60px;/*inline-blockだからこそpaddingが調整できる*/
+    text-decoration: none;
+    box-shadow: 5px 5px 0 #bbb;
+    border-radius: 5px;
+    transition: border-radius .25s;
+}                
+.button:hover{
+    box-shadow: 0 0 0 #bbb;
+}
+.button.button-submission {
+    background-color: #92d3ca;
+}
+
+/*
+.select, .input, .radio, .textarea
+*/
+.select{
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-width: 500px;
+}
+.input{
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-width: 500px;
+}
+.radio{
+    margin: 0px 10px;
+}
+.textarea{
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    min-width: 500px;
+    min-height: 100px;
+}
+@media screen and (max-width: 768px){
+    .select,
+    .input,
+    .textarea{
+        min-width: auto;
+        width: 100%;
+    }
+}
+/*.form{}*/
+.form-table{
+    margin: 0 auto;/*ブロック要素に対して中央寄せにしたいときに使う*/
+}
+/*.form-table tr{} */
+.form-table th{
+    padding: 10px;
+    text-align: left;
+}
+.form-table td{
+    padding: 10px;
+}
+.form-button{
+    text-align: center;
+    margin: 20px;
+}
+@media screen and (max-width: 768px){
+    .form-table,
+    .form-table tbody,
+    .form-table tr,
+    .form-table th,
+    .form-table td{
+        display: block;
+    }
+}
+
+/*
+works
+*/
+.works{
+    margin: 40px 0;
+    padding: 20px;
+    text-align: center;
+}
+.works >img{
+    margin: 0 15px;
+}
+@media screen and (max-width: 768px){
+    .works{
+        margin: 20px 0;
+        padding: 10px;
+    }
+    .works >img{
+        width: 100px;
+        margin: 5px;    
+    }
+}
+
+
+.footer{
+    background-color: #333;
+    color: #efefef;
+}
+.footer-map{
+    margin: 0;
+    padding: 40px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.footer-map >iframe{
+    width: 60%;
+}
+.footer-mapinfo{
+    width: 40%;
+    padding: 15px;/*box-sizing border-boxを設定することで40%のなかに30pxを入れることができる*/
+}
+.footer-maplogo{
+    font-size: 25px;
+    font-weight: bold;
+}
+.footer-maplogo >svg{
+    fill: transparent;
+    margin-right: 10px;
+}
+.footer-mapaddress{
+    font-style: normal;
+}
+.footer-mapaddress >a{
+    color: #efefef;
+}
+.footer-line{
+    border-color: #444;
+}
+.footer-copy{
+    display: block;/*smallタグはinline要素なのでblockにして横幅いっぱい広げる*/
+    text-align: center;
+    padding: 10px;
+}
+@media screen and (max-width: 768px){
+    .footer-map{
+        padding: 15px;
+        display: block;
+    }
+    .footer-map > iframe{
+        width: 100%;
+        height: 200px;
+    }
+    .footer-mapinfo{
+        width: 100%;
+        text-align: center;
+    }
+}
